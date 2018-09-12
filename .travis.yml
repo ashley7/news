@@ -6,8 +6,8 @@ php:
   - 7.1
   - 7.2
 before_script:
-  -composer install --no-interaction
-  -composer update --no-interaction
+  -composer install
+  -composer update
 script:
   -vendor/phpunit
 
