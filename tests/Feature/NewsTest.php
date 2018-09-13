@@ -7,13 +7,17 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 use App\NewContent;
 use Faker\Generator as Faker;
 
 class NewsTest extends TestCase
 {
+
+
     public function test_news_post()
     {
+		$this->withoutMiddleware();
     	Storage::fake('avatars');
         $file = UploadedFile::fake()->image('avatar.jpg');
         $file_name = "img_".time().".".$file->getClientOriginalExtension();   
@@ -35,6 +39,7 @@ class NewsTest extends TestCase
 
     public function test_delete_artical()
     {
+    	$this->withoutMiddleware();
     	$response = $this->call("DELETE","/news/39");
     	$response->assertStatus(302);    	 
     }
