@@ -18,10 +18,6 @@ class NewsTest extends TestCase
         $file = UploadedFile::fake()->image('avatar.jpg');
         $file_name = "img_".time().".".$file->getClientOriginalExtension();   
      	$response = $this->call("POST","/news",['title'=>'Uganda develops factories','description'=>'The class provides a fake method which may be used to generate dummy files or images for testing','file_url'=>$file_name]);
-
-     	try {
-     		$file->move(public_path('images'),$file_name);
-     	} catch (\Exception $e) {}
      	$response->assertStatus(302);
     }
 

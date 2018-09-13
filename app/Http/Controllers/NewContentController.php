@@ -37,17 +37,15 @@ class NewContentController extends Controller
      */
     public function store(Request $request)
     {
+        $this->withoutMiddleware();
         $save_news = new NewContent($request->all());
-
         if ($request->hasFile('file_url')) {
             $image_value = $request->file('file_url');
             $file_name = "img_".time().".".$image_value->getClientOriginalExtension(); 
             $image_value->move(public_path('images'),$file_name);
             $save_news->file_url=$file_name;
         }
-
         $save_news->save();
-
         return redirect('/news'); 
     }
 
@@ -93,6 +91,7 @@ class NewContentController extends Controller
      */
     public function destroy($id)
     {
+        $this->withoutMiddleware();
         NewContent::destroy($id);
         return redirect('/news');
     }
