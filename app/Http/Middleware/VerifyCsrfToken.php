@@ -7,7 +7,9 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as Middleware;
 class VerifyCsrfToken extends Middleware
 {
     protected $except = [
-        '/news/*',
+        '/news.index',
+        '/news.show',
+        '/news.store',
         '/home/',
         '/number_of_articals',
     ];
