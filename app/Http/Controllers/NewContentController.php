@@ -9,11 +9,21 @@ use Illuminate\Support\Facades\Storage;
 
 class NewContentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public $successStatus = 200;
+
+    public function login()
+    {
+        if(\Auth::attempt(['email' => request('email'), 'password' => request('password')])){ 
+            $user = \Auth::user(); 
+            $success['token'] =  $user->createToken('MyApp')->accessToken; 
+            return response()->json(['success' => $success], $this->successStatus); 
+        } 
+        else{ 
+            return response()->json(['error'=>'Unauthorised'], 401); 
+        } 
+        
+    }
+
     public function index()
     {
         return view('test.news')->with(['news'=>NewContent::all(),'number_of_articals'=>$this->number_of_articals()]);

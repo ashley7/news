@@ -15,8 +15,13 @@
                          <p>                             
                              <img src="{{asset('/images')}}/{{$new->file_url}}" width="200px;" style="float: left; padding: 10px;">
                              <span>{{$new->description}}</span>
-                             <a href="{{route('news.destroy',$new->id)}}" style="float: right;">Delete</a>
-                         </p>
+                            <form action="/news/{{$new->id}}" method="POST">
+                                {{method_field('DELETE')}}
+                                @csrf
+                                <span class="glyphicon glyphicon-trash"></span>
+                                <input type="submit"  class="btn btn-danger" value="Delete Records"/>
+                            </form>
+                          </p>
                          </li>  
                          <br><br><br><br><br><br>
 
