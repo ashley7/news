@@ -15,7 +15,7 @@ class NewContentController extends Controller
     {
         if(\Auth::attempt(['email' => request('email'), 'password' => request('password')])){ 
             $user = \Auth::user(); 
-            $success['token'] =  $user->createToken('MyApp')->accessToken; 
+            $success['token'] =  $user->createToken('NewsApp')->accessToken; 
             return response()->json(['success' => $success], $this->successStatus); 
         } 
         else{ 
@@ -55,6 +55,7 @@ class NewContentController extends Controller
             $image_value->move(public_path('images'),$file_name);
             $save_news->file_url=$file_name;
         }
+     
         $save_news->save();
         return redirect('/news'); 
     }
