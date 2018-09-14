@@ -20,10 +20,9 @@ class NewsTest extends TestCase
 		$this->withoutMiddleware();
     	Storage::fake('avatars');
         $file = UploadedFile::fake()->image('avatar.jpg');
-        $file_name = "img_".time().".".$file->getClientOriginalExtension(); 
+ 
+     	$response = $this->json("POST","/news",['title'=>'Uganda develops factories','description'=>'The class provides a fake method which may be used to generate dummy files or images for testing','file_url'=>$file]);
 
-     	$response = $this->withHeaders(['file'=>'TRUE'])->json("POST","/news",['title'=>'Uganda develops factories','description'=>'The class provides a fake method which may be used to generate dummy files or images for testing','file_url'=>$file_name]);
-        
      	$response->assertStatus(302);
     }
 

@@ -46,16 +46,16 @@ class NewContentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        
+    {        
         $save_news = new NewContent($request->all());
         if ($request->hasFile('file_url')) {
             $image_value = $request->file('file_url');
             $file_name = "img_".time().".".$image_value->getClientOriginalExtension(); 
-            $image_value->move(public_path('images'),$file_name);
+            try {
+               $image_value->move(public_path('images'),$file_name); 
+            } catch (\Exception $e) {}            
             $save_news->file_url=$file_name;
         }
-     
         $save_news->save();
         return redirect('/news'); 
     }
