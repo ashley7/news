@@ -13,8 +13,6 @@ use Faker\Generator as Faker;
 
 class NewsTest extends TestCase
 {
-
-
     public function test_news_post()
     {
 		$this->withoutMiddleware();
