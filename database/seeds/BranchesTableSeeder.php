@@ -13,7 +13,7 @@ class BranchesTableSeeder extends Seeder
     public function run()
     {
         $branch = new Branch();
-        $branch->name = "Set up branch";
+        $branch->name = "Setup";
         $branch->location = "Kampala";
         $branch->save();
     }
