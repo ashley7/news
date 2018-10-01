@@ -17,6 +17,7 @@ class AccountController extends Controller
  
     public function index()
     {
+        $accounts = array();
         if (\Auth::user()->hasRole('main_admin')) {
             $accounts = Account::all();
         }else{
@@ -41,6 +42,7 @@ class AccountController extends Controller
  
     public function store(Request $request)
     {
+
         $this->validate($request,['name'=>'required','phone_number'=>'required','group_id'=>'required']);
         $accounts = new Account();
         $accounts->name = $request->name;

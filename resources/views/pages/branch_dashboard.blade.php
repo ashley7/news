@@ -35,24 +35,44 @@
                         <thead>
                             <th>Group</th>
                             <th>Accounts</th>
-                            <th>Amount out</th>
-                            <th>Expected Amount</th>
-                            <th>Paid amount</th>
-                            <th>Balance</th>
+                            <th>Amount out (UGX)</th>
+                            <th>Expected Amount (UGX)</th>
+                            <th>Paid amount (UGX)</th>
+                            <th>Balance (UGX)</th>
                         </thead>
 
                         <tbody>
                             @foreach($groups as $group)
+
+                            <?php $sum_loans = $sum_expected = $sum_paid = 0; ?>
+
+                            @foreach($group->account as $accounts)
+                                 @foreach($accounts->loan as $account_loan)
+                                  <?php
+                                     $sum_loans = $sum_loans + $account_loan->principal;
+
+                                     $sum_expected = $sum_expected + ( $account_loan->principal + ($account_loan->principal * ($account_loan->rate/100)) );
+                                   ?>
+                                 @foreach($account_loan->payment as $payments)
+                                  <?php 
+                                    $sum_paid = $sum_paid + $payments->amount;
+                                   ?>
+                                 @endforeach
+
+                                 @endforeach
+                               @endforeach
+
+
                               <tr>
                                   <td>{{$group->name}}</td>
                                   <td>{{$group->account->count()}}</td>
-                                  <td></td>
+                                  <td>{{number_format($sum_loans)}}</td>
 
-                                  <td></td>
+                                  <td>{{number_format($sum_expected)}}</td>
 
-                                  <td></td>
+                                  <td>{{number_format($sum_paid)}}</td>
                                   
-                                  <td></td>
+                                  <td>{{number_format($sum_expected - $sum_paid)}}</td>
                               </tr>
                             @endforeach                            
                         </tbody>           

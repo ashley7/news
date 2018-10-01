@@ -32,7 +32,7 @@
                               <option value="{{$group->id}}">{{$group->name}}</option>
                             @endforeach
                         </select>
-                        <input type="hidden" name="group_id" value="{{$group->id}}">
+                         
                         <br>
                         <button type="submit" class="btn btn-primary">Save</button>
 

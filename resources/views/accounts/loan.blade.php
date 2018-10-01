@@ -11,14 +11,14 @@
               </div>
           @endif
            <ul class="nav nav-tabs">
-              <li class="active"><a data-toggle="tab" href="#details">Account Details | </a></li>
-              <li><a data-toggle="tab" href="#add_loans"> Add Loan | </a></li>
-              <li><a data-toggle="tab" href="#record_payment">Record payment | </a></li>
-              <li><a data-toggle="tab" href="#view_loans"> View Loans | </a></li>
+              <li class="nav-item active"><a class="nav-link" data-toggle="tab" href="#details">Account Details  </a></li>
+              <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#add_loans"> Add Loan  </a></li>
+              <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#record_payment">Record payment  </a></li>
+              <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#view_loans"> View Loans  </a></li>
              </ul>
 
             <div class="tab-content">
-              <div id="details" class="tab-pane fade in active">
+              <div id="details" class="tab-pane active">
 
                 <h3>Account Details</h3>
                 <table class="table table-hover">

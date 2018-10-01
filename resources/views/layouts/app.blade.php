@@ -7,6 +7,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="icon" href="{{asset('images/chims.png')}}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -23,15 +24,18 @@
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/home') }}">
+                    <img src="{{asset('images/chims.png')}}" width="50px">
                     @guest
-                    {{ config('app.name', '') }}
+                  
                     @else
-                     {{ config('app.name', '') }} => {{Auth::user()->branch->name}}
-                     @endguest
+                     <span style="margin-left: 10px;"> {{Auth::user()->branch->name}} </span>
+                    @endguest
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
+ 
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
@@ -39,18 +43,18 @@
                         @role(["manager"])
 
                         <li class="nav-item">
-                            <a href="{{route('account.index')}}">Accounts</a>
+                            <a class="nav-link" href="{{route('account.index')}}">Accounts</a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{route('group.index')}}">Groups</a>
+                            <a class="nav-link" href="{{route('group.index')}}">Groups</a>
                         </li>
 
                         @endrole
                         
                         @role(['main_admin'])
                             <li class="nav-item">
-                                <a href="{{route('branch.index')}}">Branches</a>
+                                <a class="nav-link" href="{{route('branch.index')}}">Branches</a>
                             </li>
                         @endrole
                        
@@ -75,7 +79,7 @@
  
                             </li>
                             <li class="nav-item">
-                                <a class="" href="{{ route('logout') }}"
+                                <a class="nav-link" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}

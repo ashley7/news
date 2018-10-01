@@ -18,7 +18,7 @@ class CreateLoansTable extends Migration
             $table->timestamps();
             $table->double('principal',10,2);
             $table->double('expected',10,2);
-            $table->decimal('rate',3,2);
+            $table->decimal('rate',10,5);
             $table->integer('account_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->string('status',1)->default(1);

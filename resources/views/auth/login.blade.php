@@ -5,9 +5,17 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                
 
                 <div class="card-body">
+                    <center>
+                        <h1>{{ __('Login') }}</h1>
+                        <img src="{{asset('images/chims.png')}}" width="150px">
+                    </center>
+
+                    <br><br>                    
+
+
                     <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
                         @csrf
 
@@ -57,9 +65,8 @@
                                     {{ __('Login') }}
                                 </button>
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
-                                </a>
+                                    
+                               
                             </div>
                         </div>
                     </form>
