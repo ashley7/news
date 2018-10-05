@@ -12,3 +12,5 @@ Route::resource('group','GroupController');
 Route::resource('account','AccountController');
 Route::resource('loan','LoanController');
 Route::resource('payment','PaymentController');
+Route::resource('notes','ClientNoteController');
+Route::resource('refree','AccountRefreeController');

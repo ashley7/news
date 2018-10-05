@@ -31,11 +31,13 @@ class LoanController extends Controller
         $save_loan = new Loan();
         $principal = (double)str_replace(",", "", $request->principal);
         $save_loan->principal = $principal;
-        $save_loan->rate = $request->rate;
+        $save_loan->rate = (double)str_replace(",", "",$request->rate);
         $save_loan->account_id = $request->account_id;
         $save_loan->user_id = \Auth::user()->id;     
-        $expected =  $principal + ($principal*($request->rate/100));
+        $expected =  $principal + (double)str_replace(",","",$request->rate);
         $save_loan->expected = $expected;
+        $save_loan->date_of_payment = $request->date_of_payment;
+        $save_loan->particular = $request->particular;
         try {
             $save_loan->save();
             $payment_default = new Payment();
@@ -48,9 +50,7 @@ class LoanController extends Controller
             echo $e->getMessage(); exit();
         }
         return back()->with(['status'=>'Loan created']);
-
     }
-
  
     public function show($id)
     {

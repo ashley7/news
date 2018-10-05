@@ -25,7 +25,7 @@
                         <label>Branch Admin name</label>
                         <input type="text" name="admin_name" class="form-control">
 
-                        <label>Branch Admin Email</label>
+                        <label>Branch Admin username</label>
                         <input type="text" name="email" class="form-control">
 
                         <label>Phone Number</label>

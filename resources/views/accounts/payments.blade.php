@@ -15,7 +15,7 @@
                       </div>
                     @endif
 
-                  <h5>Loan issue date: {{$read_loan->created_at}}<br> Principal: UGX {{number_format($read_loan->principal)}}<br> Rate: {{$read_loan->rate}}% <br>Expected amount: UGX {{number_format($read_loan->principal + ($read_loan->principal*($read_loan->rate/100)))}}</h5>
+                  <h5>Loan issue date: {{$read_loan->created_at}}<br> Principal: UGX {{number_format($read_loan->principal)}}<br> Profit UGX: {{$read_loan->rate}} <br>Expected amount: UGX {{number_format($read_loan->principal + $read_loan->rate)}}</h5>
 
                     <table class="table" id="table_display">
                         <thead>

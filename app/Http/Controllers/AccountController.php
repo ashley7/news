@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\AccountRefree;
+use App\ClientNote;
 use App\Account;
 use App\Group;
 use App\Loan;
@@ -42,13 +44,8 @@ class AccountController extends Controller
  
     public function store(Request $request)
     {
-
-        $this->validate($request,['name'=>'required','phone_number'=>'required','group_id'=>'required']);
-        $accounts = new Account();
-        $accounts->name = $request->name;
-        $accounts->phone_number = $request->phone_number;
-        $accounts->business = $request->business;
-        $accounts->group_id = $request->group_id;
+        $this->validate($request,['name'=>'required','phone_number'=>'required','group_id'=>'required','id_number']);
+        $accounts = new Account($request->all());
         try {
             $accounts->save();
             return redirect()->route('group.show',$accounts->group_id);
@@ -58,8 +55,10 @@ class AccountController extends Controller
     public function show($id)
     {
         $account = Account::find($id);
+        $notes = ClientNote::all()->where('account_id',$id);
         $pending_loans = Loan::all()->where('account_id',$id)->where('status',1);
-        return view('accounts.loan')->with(['account'=>$account,'pending_loans'=>$pending_loans]);
+        $data=['account'=>$account,'pending_loans'=>$pending_loans,'notes'=>$notes];
+        return view('accounts.loan')->with($data);
     }
 
  

@@ -11,8 +11,14 @@ class Branch extends Model
     	return $this->hasMany('App\User');
     }
 
+    public function admin()
+    {
+    	return $this->hasOne('App\User');
+    }
+
     public function group()
     {
     	return $this->hasMany('App\Group');
     }
+
 }

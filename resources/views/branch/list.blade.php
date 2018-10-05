@@ -14,14 +14,17 @@
 
                     <table class="table" id="table_display">
                         <thead>
-                            <th>#</th> <th>Name</th>
+                            <th>#</th> <th>Name</th> <th>Location</th> <th>Admin name</th> <th>Phone number</th>
                         </thead>
 
                         <tbody>
                             @foreach($branch as $branches)
                               <tr>
                                   <td>{{$branches->id}}</td>
-                                  <td>{{$branches->name}}</td>                                
+                                  <td>{{$branches->name}}</td> 
+                                  <td>{{$branches->location}}</td> 
+                                  <td>{{$branches->admin->name}} ~{{$branches->admin->email}}</td> 
+                                  <td>{{$branches->admin->phone_number}}</td>                               
                               </tr>
                             @endforeach
                         </tbody>                       
