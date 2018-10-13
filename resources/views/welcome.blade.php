@@ -4,12 +4,12 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" href="{{asset('images/chims.png')}}">
+        <!-- <link rel="icon" href="{{asset('images/chims.png')}}"> -->
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <!-- <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css"> -->
 
         <!-- Styles -->
         <style>
@@ -75,7 +75,7 @@
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
             <div class="top-left links">
-                 <img src="{{asset('images/chims.png')}}" width="100px">
+                 <!-- <img src="{{asset('images/chims.png')}}" width="100px"> -->
             </div>
                 <div class="top-right links">
                     @auth

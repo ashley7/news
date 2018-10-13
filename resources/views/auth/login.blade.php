@@ -10,7 +10,7 @@
                 <div class="card-body">
                     <center>
                         <h1>{{ __('Login') }}</h1>
-                        <img src="{{asset('images/chims.png')}}" width="150px">
+                        <!-- <img src="{{asset('images/chims.png')}}" width="150px"> -->
                     </center>
 
                     <br><br>                    

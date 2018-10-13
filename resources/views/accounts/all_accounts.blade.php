@@ -20,7 +20,8 @@
                             @foreach($accounts as $account)
                               <tr>
                                 <td>{{$account->id}}</td>
-                                <td><a href="{{route('account.show',$account->id)}}">{{$account->name}}</a></td>
+                                <td><a href="{{route('account.show',$account->id)}}">{{$account->name}}  ({{$account->also_known_as}})</a></td>
+                                
                                 <td>{{$account->phone_number}}</td>
                                 <td>{{$account->business}}</td>
                                 <td>{{$account->group->branch->name}}</td>

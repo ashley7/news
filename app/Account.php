@@ -16,4 +16,9 @@ class Account extends Model
     {
     	return $this->belongsTo('App\Group');
     }
+
+    public function accountrefree()
+    {
+    	return $this->hasMany('App\AccountRefree');
+    }
 }

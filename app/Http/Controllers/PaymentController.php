@@ -16,7 +16,10 @@ class PaymentController extends Controller
  
     public function index()
     {
-        //
+        $loans = Loan::all();
+        $payments = Payment::all();
+        $data = ["loan"=>$loans,"payments"=>$payments];
+        return view("pages.transactions")->with($data);
     }
  
     public function create()

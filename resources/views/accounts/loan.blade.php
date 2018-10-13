@@ -12,9 +12,9 @@
           @endif
            <ul class="nav nav-tabs">
               <li class="nav-item active"><a class="nav-link" data-toggle="tab" href="#details">Account Details  </a></li>
-              <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#add_loans"> Add Loan  </a></li>
+              <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#add_loans"> Add Investment  </a></li>
               <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#record_payment">Record payment  </a></li>
-              <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#view_loans"> View Loans  </a></li>
+              <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#view_loans"> View Investment  </a></li>
               <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#clientnotes"> Client notes  </a></li>
              </ul>
 
@@ -53,12 +53,30 @@
                 <h3>Account Details</h3>
                 <table class="table table-hover">
                     <tr class="info">
-                        <td>Account Name</td> <td><span style="text-transform: capitalize;">{{$account->name}}</span></td>
+                        <td>Account Name</td> <td><span style="text-transform: capitalize;">{{$account->name}} ({{$account->also_known_as}})</span></td>
                     </tr>
 
-                    <tr class="danger">
+                     <tr class="danger">
                         <td>Account Number</td> <td>{{$account->id}}</td>
                     </tr>
+
+                    <tr>
+                        <td>ID Number</td> <td>{{$account->id_number}} ({{$account->id_type}})</td>
+                    </tr>
+
+                    <tr>
+                        <td>Language</td> <td>{{$account->language}}</td>
+                    </tr>
+
+                    <tr>
+                      <td>Date of birth</td> <td>{{$account->date_of_birth}}</td>
+                    </tr>
+
+                    <tr>
+                      <td>Marital status</td> <td>{{$account->marital_status}} ({{$account->number_of_dependants}} dependants)</td>
+                    </tr>
+
+                   
 
                     <tr class="success">
                         <td>Account Phone Number</td> <td>{{$account->phone_number}}</td>
@@ -68,11 +86,30 @@
                         <td>Business</td> <td>{{$account->business}}</td>
                     </tr>
 
-                </table>             
+                     <tr>
+                        <td>Address</td> <td>{{$account->address}} ({{$account->addreess_period}})</td>
+                    </tr>
+
+                    <tr>
+                      <td>Stall number</td> <td>{{$account->stall_number}}</td>
+                    </tr>
+
+
+                </table>   
+
+                <h3>Account refree</h3>
+                <table class="table table-hover">
+                    <th>Name</th> <th>Phone Number</th> <th>ID Number</th>
+                    @foreach($account->accountrefree as $refree)
+                       <tr>
+                         <td>{{$refree->name}}</td> <td>{{$refree->phone_number}}</td>  <td>{{$refree->national_id}}</td>
+                       </tr>
+                    @endforeach
+                </table>
               </div>
 
               <div id="add_loans" class="tab-pane fade">
-                <h3>Add New Loan to account</h3>
+                <h3>Add New Investement</h3>
                 <br>
                 <form method="POST" action="{{route('loan.store')}}">
                     @csrf
@@ -111,7 +148,17 @@
                         </thead>
 
                         <tbody>
+                          <?php
+                          $principal = $profit = 0; 
+
+                           ?>
                             @foreach($account->loan as $loans)
+
+                            <?php
+                             $principal = $principal + $loans->principal;
+                             $profit = $profit + $loans->rate;
+
+                             ?>
                              <tr>
                                  <td>{{$loans->id}}</td>
                                  <td>{{$loans->created_at}}</td>
@@ -135,6 +182,19 @@
                                  </td>
                              </tr>
                             @endforeach
+
+                             <tr>
+                              <th>Total</th>
+                              <th></th> 
+                              <th></th>
+                              <th></th>
+                              <th>{{number_format($principal)}}</th> 
+                              <th>{{number_format($profit)}}</th>
+                              <th>{{number_format($profit + $principal)}}</th>
+                              <th></th>
+                              <th></th>
+                              
+                            </tr>
                         </tbody>
                     </table>
                      

@@ -51,7 +51,7 @@
                                   <?php
                                      $sum_loans = $sum_loans + $account_loan->principal;
 
-                                     $sum_expected = $sum_expected + ( $account_loan->principal + ($account_loan->principal * ($account_loan->rate/100)) );
+                                     $sum_expected = $sum_expected + ( $account_loan->principal +  $account_loan->rate);
                                    ?>
                                  @foreach($account_loan->payment as $payments)
                                   <?php 

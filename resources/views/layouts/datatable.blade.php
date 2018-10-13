@@ -1,6 +1,3 @@
- 
-
-
 @push('scripts')
     <script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
     <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
@@ -17,7 +14,7 @@
          
             // Append a caption to the table before the DataTables initialisation
          
-            $('#table_display').DataTable( {
+            $('#table_display,#pay').DataTable( {
                 dom: 'Bfrtip',
                 buttons: [
                     'copy',

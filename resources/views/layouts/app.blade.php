@@ -7,7 +7,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" href="{{asset('images/chims.png')}}">
+    <!-- <link rel="icon" href="{{asset('images/chims.png')}}"> -->
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/home') }}">
-                    <img src="{{asset('images/chims.png')}}" width="50px">
+                    <!-- <img src="{{asset('images/chims.png')}}" width="50px"> -->
                     @guest
                   
                     @else
@@ -57,7 +57,11 @@
                         
                         @role(['main_admin'])
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('branch.index')}}">Branches</a>
+                                <a class="nav-link" href="{{route('branch.index')}}">Markets</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('payment.index')}}">Transaction</a>
                             </li>
                         @endrole
                        
